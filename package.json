@@ -9,7 +9,8 @@
     "watch": "cross-env NODE_ENV=development webpack --mode production --watch",
     "pre-commit": "lint-staged",
     "lint": "prettier --check \"./src/**/*.{ts,js,tsx}\"",
-    "lint:fix": "prettier --write \"./src/**/*.{ts,js,tsx}\""
+    "lint:fix": "prettier --write \"./src/**/*.{ts,js,tsx}\"",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
