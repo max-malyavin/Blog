@@ -19,3 +19,8 @@
 # Testing:
 
 - cypress
+
+
+# API Documentation:
+
+- Swagger - https://app.swaggerhub.com/apis/blog-app/blog/1.0.0
