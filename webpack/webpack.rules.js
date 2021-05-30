@@ -111,6 +111,7 @@ const js = {
           ],
           "@babel/plugin-syntax-dynamic-import",
           "@babel/plugin-proposal-optional-chaining",
+          "@babel/transform-runtime",
         ],
       },
     },

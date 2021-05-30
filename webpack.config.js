@@ -2,8 +2,8 @@
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const path = require("path");
 const TerserPlugin = require("terser-webpack-plugin");
-const { images, fonts, css, less, ts, js } = require("./webpack.rules.js");
-const { plugins } = require("./webpack.plugins.js");
+const { images, fonts, css, less, ts, js } = require("./webpack/./webpack.rules.js");
+const { plugins } = require("./webpack/./webpack.plugins.js");
 
 const isDev = process.env.NODE_ENV === "development";
 
