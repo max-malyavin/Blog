@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse } from "axios";
 
-const REACT_APP_API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 4200;
+const REACT_APP_API_BASE_URL = 4200 || process.env.REACT_APP_API_BASE_URL;
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: `${REACT_APP_API_BASE_URL}/api/`,
   withCredentials: true,
@@ -50,8 +50,7 @@ class HttpRequest {
   }
 
   public create<T = any>(methodName: string, config: AxiosRequestConfig): AxiosPromise<T> {
-    const { data } = config;
-    return this.axios.post(methodName, data);
+    return this.axios.post(methodName, config);
   }
 
   public update<T = any>(methodName: string, config: AxiosRequestConfig): AxiosPromise<T> {

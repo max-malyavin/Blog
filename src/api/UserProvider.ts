@@ -10,4 +10,7 @@ export default class MoviesProvider extends HttpRequest {
   public register(data: any) {
     return this.create(`${this.path}/register`, data);
   }
+  public login(data: any) {
+    return this.create(`${this.path}/login`, data);
+  }
 }

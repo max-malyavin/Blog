@@ -28,6 +28,10 @@ module.exports = {
     alias: {
       "@": path.resolve(__dirname, "src"),
     },
+    fallback: {
+      crypto: false,
+      "crypto-browserify": require.resolve("crypto-browserify"),
+    },
   },
   entry: ["/index.js"],
   plugins,

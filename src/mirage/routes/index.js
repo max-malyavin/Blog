@@ -1,6 +1,6 @@
 import userRouter from "./userRouter";
 
-const baseURL = process.env.REACT_APP_API_BASE_URL || 4200;
+const baseURL = 4200 || process.env.REACT_APP_API_BASE_URL;
 
 const RoutesHandlers = [...userRouter];
 

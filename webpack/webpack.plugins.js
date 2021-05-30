@@ -1,6 +1,7 @@
 const CircularDependencyPlugin = require("circular-dependency-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
@@ -25,6 +26,9 @@ const plugins = [
     inject: "body",
     template: "index.html",
     favicon: "assets/favicon.ico",
+  }),
+  new webpack.ProvidePlugin({
+    React: "react",
   }),
   // new BundleAnalyzerPlugin(),
 ];
