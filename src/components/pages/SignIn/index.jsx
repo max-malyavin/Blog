@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { UserService } from "@/api";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "@/store/ducks/user/reducer";
+import { userSelectors } from "@/store/ducks/user/selectors";
 
 export function SignIn() {
   const [values, setValues] = useState({
@@ -8,27 +11,21 @@ export function SignIn() {
     password: "",
   });
 
+  const isLoading = useSelector(userSelectors.isLoading);
+  const user = useSelector(userSelectors.userData);
+
+  const dispatch = useDispatch();
   function handleChange(prop, value) {
     setValues({ ...values, [prop]: value });
   }
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-
-    const { username, password } = values;
-
-    try {
-      const response = await UserService.login({ username, password });
-
-      if (response.data.error) {
-        console.log(response.data.error);
-      } else {
-        console.log(response.data, "data");
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-    }
+    dispatch(login(values));
+    setValues({
+      username: "",
+      password: "",
+    });
   };
 
   return (
@@ -46,12 +43,16 @@ export function SignIn() {
           value={values.password}
           onChange={(ev) => handleChange("password", ev.target.value)}
         />
-        <button type="submit">Логин</button>
+        <button disabled={isLoading} type="submit">
+          Логин
+        </button>
+        {isLoading && <span>Загрузка...</span>}
         <hr />
         <Link to="/signup">
           <button>Создать новый аккаунт</button>
         </Link>
       </form>
+      <div style={{ fontSize: "20px", padding: "10px" }}> {user && JSON.stringify(user.data)}</div>
     </div>
   );
 }
