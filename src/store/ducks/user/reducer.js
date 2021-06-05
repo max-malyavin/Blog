@@ -12,6 +12,7 @@ export const login = createAsyncThunk("user/login", async ({ username, password 
 
     if (response.data.error) {
       console.log(response.data.error);
+      return { data: response.data.error };
     } else {
       return { data: response.data };
     }
@@ -31,14 +32,24 @@ export const logout = createAsyncThunk("user/logout", async (_, thunkAPI) => {
   }
 });
 
-export const register = createAsyncThunk("user/register", async (_, thunkAPI) => {
-  try {
-  } catch (error) {
-    console.log(error);
-  } finally {
-    thunkAPI.dispatch(setUserLoading({ value: false }));
+export const register = createAsyncThunk(
+  "user/register",
+  async ({ username, password }, thunkAPI) => {
+    try {
+      const response = await UserService.register({ username, password });
+      if (response.data.error) {
+        console.log(response.data.error);
+        return { data: response.data.error };
+      } else {
+        console.log(response.data, "data");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      thunkAPI.dispatch(setUserLoading({ value: false }));
+    }
   }
-});
+);
 
 export const asyncActions = {
   login,
