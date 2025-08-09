@@ -31,4 +31,4 @@
    - Эстетика и минимализм ❌
    - Помощь и документация ❌
 1. Дизайн
-   - Figma - https://www.figma.com/file/vHFx8FRGzUkcEKWKBtllRV/Blog
+   - Figma - 
